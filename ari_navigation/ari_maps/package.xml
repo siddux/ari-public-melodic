@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>ari_maps</name>
+  <version>0.0.36</version>
+  <description>ARI-specific maps and launch files.</description>
+  <maintainer email="procopio.stein@pal-robotics.com">Procopio Stein</maintainer>
+  <license>Apache License 2.0</license>
+  <author email="enrique.fernandez@pal-robotics.com">Enrique Fernandez</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+</package>

@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!--
+
+  Copyright (c) 2019, PAL Robotics, S.L.
+  All rights reserved.
+
+  This work is licensed under the Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License.
+  To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/3.0/ or send a letter to
+  Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
+-->
+
+<robot name="ari" xmlns:xacro="http://ros.org/wiki/xacro">
+  <gazebo>
+    <plugin filename="libgazebo_ros_control.so" name="gazebo_ros_control">
+      <ns></ns>
+      <robotSimType>pal_hardware_gazebo/PalHardwareGazebo</robotSimType>
+      <xacro:if value="${is_multiple}">
+          <robotNamespace>/${nsp}</robotNamespace>
+      </xacro:if>
+      <xacro:unless value="${is_multiple}">
+          <robotNamespace></robotNamespace>
+      </xacro:unless>
+      <controlPeriod>0.001</controlPeriod>
+    </plugin>
+
+    <plugin filename="libgazebo_ros_p3d.so" name="gazebo_ros_p3d">
+      <bodyName>base_footprint</bodyName>
+      <topicName>ground_truth_odom</topicName>
+      <alwaysOn>true</alwaysOn>
+      <updateRate>100.0</updateRate>
+      <xacro:if value="${is_multiple}">
+          <robotNamespace>/${nsp}</robotNamespace>
+      </xacro:if>
+    </plugin>
+  </gazebo>
+
+  <gazebo>
+    <plugin filename="libgazebo_world_odometry.so" name="gazebo_ros_odometry">
+      <frameName>base_footprint</frameName>
+      <topicName>floating_base_pose_simulated</topicName>
+      <xacro:if value="${is_multiple}">
+          <robotNamespace>/${nsp}</robotNamespace>
+      </xacro:if>
+    </plugin>
+  </gazebo>
+
+  <xacro:macro name="ari_hand_gazebo_simulation" params="side">
+    <gazebo>
+      <plugin filename="libgazebo_underactuated_finger.so" name="gazebo_${side}_fingers">
+        <actuatedJoint>hand_${side}_fingers_joint</actuatedJoint>
+        <virtualJoint>
+          <name>hand_${side}_virtual_1_joint</name>
+          <scale_factor>1.0</scale_factor>
+        </virtualJoint>
+        <virtualJoint>
+          <name>hand_${side}_virtual_2_joint</name>
+          <scale_factor>1.0</scale_factor>
+        </virtualJoint>
+      </plugin>
+    </gazebo>
+  </xacro:macro>
+
+  <!-- define global properties -->
+  <xacro:property name="M_PI" value="3.1415926535897931" />
+
+</robot>

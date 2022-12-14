@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>  
+	<node name="fisheye_rear_relay" type="throttle" pkg="topic_tools" args="messages /rear_fisheye_camera/image_raw/compressed  5 /rear_camera/fisheye/image_raw/compressed" />
+	<node name="fisheye_front_relay" type="throttle" pkg="topic_tools" args="messages /front_fisheye_camera/image_raw/compressed 5 /front_camera/fisheye/image_raw/compressed" />
+	<node name="fisheye_rear_relay_info" type="throttle" pkg="topic_tools" args="messages /rear_fisheye_camera/camera_info 5 /rear_camera/fisheye/camera_info" />
+ 	<node name="fisheye_front_relay_info" type="throttle" pkg="topic_tools" args="messages /front_fisheye_camera/camera_info 5 /front_camera/fisheye/camera_info" />
+        
+	<node name="front_fisheye_srv_remap" type="set_camera_info_srv_remap" pkg="pal_ros_utils">
+            <param name="input_service" type="string" value="/front_fisheye_camera/set_camera_info"/>
+            <param name="remapped_service" type="string" value="/front_camera/fisheye/set_camera_info"/>
+        </node>
+	<node name="rear_fisheye_srv_remap" type="set_camera_info_srv_remap" pkg="pal_ros_utils">
+            <param name="input_service" type="string" value="/rear_fisheye_camera/set_camera_info"/>
+            <param name="remapped_service" type="string" value="/rear_camera/fisheye/set_camera_info"/>
+        </node>
+
+</launch>

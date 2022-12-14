@@ -1,0 +1,12 @@
+robot: omni_base
+
+odometry: controller
+
+mapping: gmapping
+
+localization: amcl
+
+planner      : base
+local_planner: teb
+
+visual_enabled: false

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+  <arg name="width" default="3264"/>
+  <arg name="height" default="2448"/>
+  <arg name="format" default="jpeg"/>
+  <arg name="device" default="/dev/video6"/>
+  <group ns="/front_rgbd_camera/rgb/" >
+    <node pkg="uvc_camera" type="uvc_camera_node" name="uvc_camera" output="screen">
+      <param name="width" type="int" value="$(arg width)" />
+      <param name="height" type="int" value="$(arg height)" />
+      <param name="format" value="$(arg format)" />
+      <param name="device" type="string" value="$(arg device)"/>
+    </node>
+  </group>
+</launch>

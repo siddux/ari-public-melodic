@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>ari_rgbd_sensors</name>
+  <version>0.0.36</version>
+  <description>ARI-specific RGBD sensors launch and config files.</description>
+  <maintainer email="procopio.stein@pal-robotics.com">Procópio Stein</maintainer>
+  <maintainer email="sai.kishor@pal-robotics.com">Sai Kishor Kothakota</maintainer>
+  <license>Apache License 2.0</license>
+  <author email="victor.lopez@pal-robotics.com">Victor Lopez</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  
+  <exec_depend>pal_usb_utils</exec_depend>
+  <exec_depend>realsense2_camera</exec_depend>
+  <exec_depend>image_transport</exec_depend>
+  <exec_depend>topic_tools</exec_depend>
+  <exec_depend>pointcloud_to_laserscan</exec_depend>
+  <exec_depend condition="$ROS_DISTRO != noetic">uvc_camera</exec_depend>
+  <exec_depend condition="$ROS_DISTRO == noetic">libuvc_camera</exec_depend>
+
+</package>

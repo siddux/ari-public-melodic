@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>ari_2dnav</name>
+  <version>0.0.36</version>
+  <description>ARI launch files needed to run navigation.</description>
+  <maintainer email="procopio.stein@pal-robotics.com">Procopio Stein</maintainer>
+  <license>Apache License 2.0</license>
+  <author email="procopio.stein@pal-robotics.com">Procopio Stein</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <exec_depend>ari_maps</exec_depend>
+  <exec_depend>ari_rgbd_sensors</exec_depend>
+  <exec_depend>pal_navigation_cfg_ari</exec_depend>
+
+</package>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+  <arg name="prefix" default="/front_rgbd_camera/rgb/"/>
+  <arg name="device" default="/dev/video6"/>
+  <arg name="width" default="3264"/>
+  <arg name="height" default="2448"/>
+  <arg name="format" default="jpeg"/>
+  <arg name="frame_id" default="front_rgb_camera_optical_frame"/>
+  <group ns="$(arg prefix)">
+    <node pkg="nodelet" type="nodelet" name="camera_manager" args="manager" output="screen"/>
+    <node pkg="nodelet" type="nodelet" name="uvc_camera" args="load uvc_camera/CameraNodelet $(arg prefix)camera_manager" output="screen">
+      <param name="width" type="int" value="$(arg width)" />
+      <param name="height" type="int" value="$(arg height)" />
+      <param name="format" value="$(arg format)" />
+      <param name="device" type="string" value="$(arg device)"/>
+      <param name="frame_id" type="string" value="$(arg frame_id)" />
+    </node>
+  </group>
+</launch>

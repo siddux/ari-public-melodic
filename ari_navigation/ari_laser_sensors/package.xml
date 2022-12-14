@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>ari_laser_sensors</name>
+  <version>0.0.36</version>
+  <description>ARI-specific laser sensors launch and config files.</description>
+  <maintainer email="sergio.moyano@pal-robotics.com">Sergio Moyano</maintainer>
+  <license>Apache License 2.0</license>
+  <author email="sergio.moyano@pal-robotics.com">Sergio Moyano</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <exec_depend>sick_tim</exec_depend>
+  <exec_depend>ydlidar_ros_driver</exec_depend>
+
+  <!-- The export tag contains other, unspecified, tags -->
+  <export>
+    <!-- Other tools can request additional information be placed here -->
+
+  </export>
+</package>
+
+  <!--exec_depend>depthimage_to_laserscan</exec_depend>
+  <exec_depend>pointcloud_to_laserscan</exec_depend>
+  <exec_depend>laser_filters</exec_depend>
+  <exec_depend>pal_filters</exec_depend -->

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+  <!-- We subscribe to the raspicam topic and republish it -->
+  <!-- This is required, because if the topic is published from the raspi, as
+       soon as the number of subscribers increases, the CPU usage goes up and
+       the framerate drops to 3-4 fps-->
+  <node pkg="topic_tools" type="relay" name="raspi_head_info_republish" args="/raspicam_node/camera_info /head_front_camera/color/camera_info" output="screen"/>
+  <node pkg="topic_tools" type="relay" name="raspi_image_compressed_republish" args="/raspicam_node/image/compressed /head_front_camera/color/image_raw/compressed" output="screen"/>
+  <!-- image_transport republish can consume a lot of CPU, we'll just relay the compressed topic -->
+  <!-- <node pkg="image_transport" type="republish" name="raspi_head_image_republish" args="compressed in:=/raspicam_node/image out:=/head_front_camera/image_raw" output="screen"/>-->
+</launch>

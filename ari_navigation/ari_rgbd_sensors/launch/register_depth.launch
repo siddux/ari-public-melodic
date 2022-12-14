@@ -1,0 +1,24 @@
+<launch>
+  <param name="use_sim_time" value="true" />
+  <arg name="camera_name" default="torso_front_camera" />
+  <arg name="rgb_camera_info" value="/$(arg camera_name)/color/camera_info"/>
+  <arg name="rgb_img" value="/$(arg camera_name)/color/image_raw"/>  
+  <arg name="dpt_camera_info" value="/$(arg camera_name)/depth/camera_info"/>
+  <arg name="dpt_img" value="/$(arg camera_name)/depth/image_raw"/>  
+  <arg name="dpt_registered_camera_info" value="/$(arg camera_name)/aligned_depth_to_color/camera_info"/>  
+  <arg name="dpt_registered_img" value="/$(arg camera_name)/aligned_depth_to_color/image_raw"/>  
+
+  <node pkg="nodelet" type="nodelet" name="standalone_nodelet" args="manager" output="screen"/>
+  
+  <node pkg="nodelet" type="nodelet" name="register" args="load depth_image_proc/register standalone_nodelet">
+    <remap from="rgb/camera_info" to="$(arg rgb_camera_info)"/>
+    <remap from="depth/camera_info" to="$(arg dpt_camera_info)"/>
+    <remap from="depth/image_rect" to="$(arg dpt_img)"/>
+    <remap from="depth_registered/camera_info" to="$(arg dpt_registered_camera_info)"/>
+    <remap from="depth_registered/image_rect" to="$(arg dpt_registered_img)"/>
+  </node>
+  
+  
+</launch>
+
+
